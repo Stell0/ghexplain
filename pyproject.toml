@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghexplain"
+version = "0.0.1"
+authors = [
+    { name = "Stefano Fancello", email = "stefano.fancello@nethesis.it" },
+]
+description = "AI-powered explanations for GitHub issues using LangChain"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Stell0/ghexplain"
+"Bug Tracker" = "https://github.com/Stell0/ghexplain/issues"
+
+[project.scripts]
+ghexplain = "ghexplain.cli:main"

@@ -4,15 +4,6 @@ A Python library that provides AI-powered explanations for GitHub issues using L
 
 ## Installation
 
-from repository
-```bash
-git clone git@github.com:Stell0/ghexplain.git
-cd ghexplain
-pip install -e .
-```
-
-from PyPI (not yet released)
-
 ```bash
 pip install ghexplain
 ```

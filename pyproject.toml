@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ghexplain"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
     { name = "Stefano Fancello", email = "stefano.fancello@nethesis.it" },
 ]
@@ -29,3 +29,7 @@ dependencies = [
 
 [project.scripts]
 ghexplain = "ghexplain.cli:main"
+
+[tool.setuptools]
+packages = ["ghexplain"]
+package-dir = {"" = "src"}

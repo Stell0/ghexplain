@@ -63,20 +63,22 @@ def _fetch_issue_comments(owner: str, repo: str, issue_number: int) -> list:
 def _create_summary_prompt(issue_data: dict, language: str) -> str:
 	"""Create a prompt for the LLM to summarize the issue."""
 	return ChatPromptTemplate.from_messages([
-		("system", f"""You are an expert at explaining technical GitHub issues in simple terms. Your goal is to make complex 
-		technical issues understandable to developers who might not be familiar with the project internals. Write in {language}.
-		Keep explanations concise but ensure they include enough context to understand the issue's significance."""),
-		("user", """Explain this GitHub issue in a way that's clear to any technical person, even if they don't know the codebase. 
-		Focus on:
-		- What problem needs to be solved (in plain terms)
-		- Why it matters to users or developers
-		- Current state of the issue
+		("system", f"""You are an expert in simplifying technical GitHub issues for broader audiences.
+		Your goal is to explain complex issues, focusing on clarity and relevance for developers who may not be familiar with the project internals. 
+		Write concise summaries that provide enough context to convey the issue's significance, ignoring alternative solutions proposed in the issue.
+		Write in plain text, don't use markdown formatting. Don't write titles, don't write any preambe.
+		Avoid using phrases that imply collective action, such as "we," in the summary.
+		If the state is 'closed' assume the issue has been resolved and released.
+		Write in {language}"""),
+		("user", """Summarize this GitHub issue in 3-4 concise lines suitable for a release announcement.  
+		Keep it brief and clear, ensuring it's understandable to a technical audience unfamiliar with the codebase. 
+		Use comments only to clarify the issue context if it's essential.
 
 		Here's the issue:
 		Title: {title}
 		Body: {body}
 		Status: {state}
-		Comments Count: {comments}
+		Comments: {comments}
 		""")
 	])
 
